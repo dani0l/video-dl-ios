@@ -16,9 +16,6 @@
 		DB4A953017DCF2F500A96E5D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB4A952E17DCF2F500A96E5D /* InfoPlist.strings */; };
 		DB4A953217DCF2F500A96E5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4A953117DCF2F500A96E5D /* main.m */; };
 		DB4A953617DCF2F500A96E5D /* VDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4A953517DCF2F500A96E5D /* VDAppDelegate.m */; };
-		DB4A953817DCF2F500A96E5D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4A953717DCF2F500A96E5D /* Default.png */; };
-		DB4A953A17DCF2F500A96E5D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4A953917DCF2F500A96E5D /* Default@2x.png */; };
-		DB4A953C17DCF2F500A96E5D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4A953B17DCF2F500A96E5D /* Default-568h@2x.png */; };
 		DB5A203217E2291300346A80 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB5A203117E2291300346A80 /* MediaPlayer.framework */; };
 		DB5BA89517DFAC11003E080A /* VDVideoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB5BA89317DFAC11003E080A /* VDVideoBrowser.m */; };
 		DB5BA89617DFAC11003E080A /* VDVideoBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5BA89417DFAC11003E080A /* VDVideoBrowser.xib */; };
@@ -44,9 +41,6 @@
 		DB4A953317DCF2F500A96E5D /* video-dl-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "video-dl-Prefix.pch"; sourceTree = "<group>"; };
 		DB4A953417DCF2F500A96E5D /* VDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDAppDelegate.h; sourceTree = "<group>"; };
 		DB4A953517DCF2F500A96E5D /* VDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDAppDelegate.m; sourceTree = "<group>"; };
-		DB4A953717DCF2F500A96E5D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		DB4A953917DCF2F500A96E5D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		DB4A953B17DCF2F500A96E5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DB5A203117E2291300346A80 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		DB5BA89217DFAC11003E080A /* VDVideoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDVideoBrowser.h; sourceTree = "<group>"; };
 		DB5BA89317DFAC11003E080A /* VDVideoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDVideoBrowser.m; sourceTree = "<group>"; };
@@ -132,9 +126,6 @@
 				DB4A952E17DCF2F500A96E5D /* InfoPlist.strings */,
 				DB4A953117DCF2F500A96E5D /* main.m */,
 				DB4A953317DCF2F500A96E5D /* video-dl-Prefix.pch */,
-				DB4A953717DCF2F500A96E5D /* Default.png */,
-				DB4A953917DCF2F500A96E5D /* Default@2x.png */,
-				DB4A953B17DCF2F500A96E5D /* Default-568h@2x.png */,
 				DB776B3F17DD01B900297970 /* python-files */,
 			);
 			name = "Supporting Files";
@@ -202,9 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4A953017DCF2F500A96E5D /* InfoPlist.strings in Resources */,
-				DB4A953817DCF2F500A96E5D /* Default.png in Resources */,
-				DB4A953A17DCF2F500A96E5D /* Default@2x.png in Resources */,
-				DB4A953C17DCF2F500A96E5D /* Default-568h@2x.png in Resources */,
 				DB776B4117DD01C400297970 /* python in Resources */,
 				DB5BA89617DFAC11003E080A /* VDVideoBrowser.xib in Resources */,
 				DB0FA98F17E33B7500C8B972 /* VDDownloadViewController.xib in Resources */,
