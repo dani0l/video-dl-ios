@@ -35,6 +35,7 @@ video-dl/python/pylib/exec/include/python2.7/pyconfig.h: ${PY_EMBED}/pylib/pycon
 	cp -f "$<" "$@"
 
 video-dl/python/pylib/pyconfig.h: ${PY_EMBED}/pylib/pyconfig.h
+	mkdir -p "$@"
 	cp -f "$<" "$@"
 
 video-dl/python/pylib: video-dl/python/pylib/pyconfig.h video-dl/python/pylib/lib  video-dl/python/pylib/exec/include/python2.7/pyconfig.h video-dl/python/pylib/exec
