@@ -2,6 +2,7 @@
 #import "VDAppDelegate.h"
 #import "VDVideo.h"
 
+#import "PythonExtensions.h"
 #import "pyutils.h"
 
 
@@ -38,7 +39,7 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 		vdl = PyObject_CallObject(VideoDL, init_args);
 
 
-		youtube_dl_version = [NSString stringWithUTF8String:PyString_AsString(PyObject_GetAttrString(videodl_mod, "ydl_version"))];
+		youtube_dl_version = [NSString stringWithPyString:PyObject_GetAttrString(videodl_mod, "ydl_version")];
 	}
 	return self;
 }
