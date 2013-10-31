@@ -16,6 +16,9 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 
 
 @implementation VDVideoDL
+{
+	VDVideo *currentVideo;
+}
 
 -(id)init
 {
@@ -65,15 +68,21 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 
 -(PyObject *)progressHookWithSelf:(PyObject *)s AndArgs:(PyObject *)args
 {
-	PyObject *progress;
-	PyArg_ParseTuple(args, "O", &progress);
-	// py_print(progress);
-	PyObject *status = PyDict_GetItemString(progress, "status");
-	if (PyObject_Compare(status, PyString_FromString("finished")) == 0) {
-		NSString *filename = [NSString stringWithUTF8String:PyString_AsString(PyDict_GetItemString(progress, "filename"))];
-		VDVideo *video = [[VDVideo alloc] initWithFolder:[filename stringByDeletingLastPathComponent]];
-		NSLog(@"Downloaded finished for id: %@", video.id);
-	};
+	PyObject *pyProgress;
+	PyArg_ParseTuple(args, "O", &pyProgress);
+	NSDictionary *progress = [NSDictionary dictionaryWithPyObject:pyProgress];
+	NSString *filename = [progress objectForKey:@"filename"];
+	NSString *status = [progress objectForKey:@"status"];
+	if ([status isEqualToString:@"finished"]) {
+		currentVideo = nil;
+	}
+	else {
+		if (!currentVideo) {
+			currentVideo = [[VDVideo alloc] initWithFolder:[filename stringByDeletingLastPathComponent]];
+			[self.delegate videoDL:self startedDownloadForVideo:currentVideo];
+		}
+		[self.delegate videoDL:self reportsDownloadProgress:progress forVideo:currentVideo];
+	}
 	Py_RETURN_NONE;
 }
 
