@@ -1,6 +1,5 @@
 #import "VDVideoDL.h"
 #import "VDAppDelegate.h"
-#import "VDVideo.h"
 
 #import "PythonExtensions.h"
 #import "pyutils.h"
@@ -74,6 +73,7 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 	NSString *filename = [progress objectForKey:@"filename"];
 	NSString *status = [progress objectForKey:@"status"];
 	if ([status isEqualToString:@"finished"]) {
+		[self.delegate videoDL:self finishedDownloadForVideo:currentVideo];
 		currentVideo = nil;
 	}
 	else {

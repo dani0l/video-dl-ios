@@ -29,5 +29,6 @@
 @required
 -(void)videoDL:(VDVideoDL *) videodl startedDownloadForVideo:(VDVideo *)video;
 -(void)videoDL:(VDVideoDL *) videodl reportsDownloadProgress:(NSDictionary *)progress forVideo:(VDVideo *)video;
+-(void)videoDL:(VDVideoDL *) videodl finishedDownloadForVideo:(VDVideo *)video;
 
 @end

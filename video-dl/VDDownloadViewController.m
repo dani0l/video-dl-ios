@@ -64,6 +64,12 @@
 	[self.progressLabel setHidden:NO];
 }
 
+-(void)finishedDownloadingVideo:(VDVideo *)video
+{
+	[self.progressLabel setText:[NSString stringWithFormat:@"Finished: \"%@\"",video.title,nil]];
+	[self.progview setHidden:YES];
+}
+
 #pragma mark VDVideDLDelegate
 
 -(void)videoDL:(VDVideoDL *) videodl startedDownloadForVideo:(VDVideo *)video
@@ -75,6 +81,11 @@
 {
 	NSArray *payload = @[progress, video];
 	[self performSelectorOnMainThread:@selector(reportProgress:) withObject:payload waitUntilDone:NO];
+}
+
+-(void)videoDL:(VDVideoDL *)videodl finishedDownloadForVideo:(VDVideo *)video
+{
+	[self performSelectorOnMainThread:@selector(finishedDownloadingVideo:) withObject:video waitUntilDone:NO];
 }
 
 @end
