@@ -3,6 +3,7 @@
 @interface VDVideo : NSObject
 
 @property NSDictionary *info_dict;
+@property NSString *folder;
 @property NSString *title;
 @property NSString *id;
 @property NSString *description;

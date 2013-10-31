@@ -62,11 +62,23 @@
 	[self presentMoviePlayerViewControllerAnimated:player];
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		[self removeVideoAtIndexPath:indexPath];
+	}
+}
+
+
 #pragma mark Custom methods
+-(NSString *)videoFolderForIndexPath:(NSIndexPath *)indexPath
+{
+	return [videos_folders objectAtIndex:indexPath.row];
+}
 
 -(VDVideo *)videoInfoForIndexPath:(NSIndexPath *)indexPath
 {
-	return [self videoInfoForVideo:[videos_folders objectAtIndex:[indexPath indexAtPosition:1]]];
+	return [self videoInfoForVideo:[self videoFolderForIndexPath:indexPath]];
 }
 
 -(VDVideo *)videoInfoForVideo:(NSString *)videoFolder
@@ -77,6 +89,16 @@
 		video = [[VDVideo alloc] initWithFolder:fullFolderPath];
 	}
 	return video;
+}
+
+-(void)removeVideoAtIndexPath:(NSIndexPath *)indexPath
+{
+	NSString *folder = [self videoFolderForIndexPath:indexPath];
+	VDVideo *video = [self videoInfoForIndexPath:indexPath];
+	[[NSFileManager defaultManager] removeItemAtPath:video.folder error:nil];
+	[videos removeObjectForKey:folder];
+	[videos_folders removeObject:folder];
+	[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

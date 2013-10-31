@@ -13,6 +13,7 @@
 		NSString *json_filename = [self.videoPath stringByAppendingPathExtension:@"info.json"];
 		NSData *json_data = [NSData dataWithContentsOfFile:json_filename];
 		self.info_dict = [NSJSONSerialization JSONObjectWithData:json_data options:0 error:nil];
+		self.folder = folder;
 		self.title = [info_dict objectForKey:@"title"];
 		self.id = [info_dict objectForKey:@"id"];
 		self.description = [info_dict objectForKey:@"description"];
