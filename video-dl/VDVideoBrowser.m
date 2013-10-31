@@ -8,8 +8,15 @@
 -(id)initWithNibName:(NSString *)name bundle:(NSBundle *)bundle
 {
 	self = [super initWithNibName:name bundle:bundle];
-	if (self) { 
-		videos_folders = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[VDVideoDL videosFolder] error:nil];
+	if (self) {
+		NSArray *all_folders = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[VDVideoDL videosFolder] error:nil];
+
+		videos_folders = [NSMutableArray array];
+		for (NSString *folder in all_folders) {
+			// The Finder tends to add this file, which would break the process
+			// TODO: remove paths that are not directories
+			if (![folder hasSuffix:@".DS_Store"]) [videos_folders addObject:folder];
+		}
 		videos = [NSMutableDictionary dictionary];
 	}
 	return self;

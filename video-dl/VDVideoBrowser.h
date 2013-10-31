@@ -4,7 +4,7 @@
 
 @interface VDVideoBrowser : UITableViewController
 {
-	NSArray *videos_folders;
+	NSMutableArray *videos_folders;
 	NSMutableDictionary *videos;
 }
 
