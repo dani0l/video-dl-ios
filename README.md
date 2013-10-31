@@ -14,3 +14,7 @@ Before you can build the app you have to follow some steps:
 	```
 
 The you can open the Xcode project and test it in the simulator.
+
+# Copyright
+
+The code is releades under the MIT License, the full license is available in the [LICENSE](LICENSE) file.
