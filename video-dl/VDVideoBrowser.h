@@ -10,4 +10,6 @@
 
 -(VDVideo *)videoInfoForVideo:(NSString *)videoFolder;
 
+-(void)addVideo:(VDVideo *)video;
+
 @end

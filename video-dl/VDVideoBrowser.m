@@ -108,4 +108,16 @@
 	[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+-(void)addVideo:(VDVideo *)video
+{
+	NSString *folder = [video.folder lastPathComponent];
+	if ([videos_folders indexOfObject:folder] != NSNotFound) {
+		return;
+	}
+	[videos_folders addObject:folder];
+	[videos setObject:video forKey:folder];
+	NSIndexPath *path = [NSIndexPath indexPathForRow:([videos_folders count] - 1) inSection:0];
+	[self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 @end

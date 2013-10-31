@@ -1,4 +1,6 @@
 #import "VDDownloadViewController.h"
+#import "VDAppDelegate.h"
+
 
 @implementation VDDownloadViewController
 
@@ -68,6 +70,8 @@
 {
 	[self.progressLabel setText:[NSString stringWithFormat:@"Finished: \"%@\"",video.title,nil]];
 	[self.progview setHidden:YES];
+	VDAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	[appDelegate.videoBrowser addVideo:video];
 }
 
 #pragma mark VDVideDLDelegate

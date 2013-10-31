@@ -1,10 +1,9 @@
 #import "VDAppDelegate.h"
-#import "VDVideoBrowser.h"
 
 
 @implementation VDAppDelegate
 
-@synthesize downloadViewController;
+@synthesize downloadViewController, videoBrowser;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -15,7 +14,7 @@
 	downloadViewController = [[VDDownloadViewController alloc] initWithNibName:@"VDDownloadViewController" bundle:nil];
 	downloadViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:0];
 
-	VDVideoBrowser *videoBrowser = [[VDVideoBrowser alloc] initWithNibName:@"VDVideoBrowser" bundle:nil];
+	videoBrowser = [[VDVideoBrowser alloc] initWithNibName:@"VDVideoBrowser" bundle:nil];
 	UINavigationController *videoBrowserNavigationController = [[UINavigationController alloc] initWithRootViewController:videoBrowser];
 	videoBrowserNavigationController.tabBarItem.title = @"Browse videos";
 
