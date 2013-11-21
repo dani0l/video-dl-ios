@@ -10,7 +10,7 @@
 	if (self) {
 		NSString *video_name = [folder lastPathComponent];
 		self.videoPath = [folder stringByAppendingPathComponent:video_name];
-		NSString *json_filename = [self.videoPath stringByAppendingPathExtension:@"info.json"];
+		NSString *json_filename = [[self.videoPath stringByDeletingPathExtension] stringByAppendingPathExtension:@"info.json"];
 		NSData *json_data = [NSData dataWithContentsOfFile:json_filename];
 		self.info_dict = [NSJSONSerialization JSONObjectWithData:json_data options:0 error:nil];
 		self.folder = folder;
