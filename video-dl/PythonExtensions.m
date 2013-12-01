@@ -25,6 +25,11 @@ id convertPyObject(PyObject *object)
 	return [NSString stringWithUTF8String:PyBytes_AsString(object)];
 }
 
+-(PyObject *)pyObject
+{
+	return PyUnicode_FromString([self UTF8String]);
+}
+
 @end
 
 @implementation NSNumber (Python)
@@ -42,6 +47,12 @@ id convertPyObject(PyObject *object)
 +(NSNumber *)numberWithPyFloat:(PyObject *)object
 {
 	return [NSNumber numberWithDouble:PyFloat_AsDouble(object)];
+}
+
+
+-(PyObject *)pyObject
+{
+	return PyFloat_FromDouble([self doubleValue]);
 }
 
 @end
@@ -64,6 +75,16 @@ id convertPyObject(PyObject *object)
 	return res;
 }
 
+-(PyObject *)pyObject
+{
+	PyObject *dict = PyDict_New();
+	for (id key in self) {
+		id value = self[key];
+		PyDict_SetItem(dict, [key pyObject], [value pyObject]);
+	}
+	return dict;
+}
+
 @end
 
 @implementation NSArray (Python)
@@ -77,6 +98,13 @@ id convertPyObject(PyObject *object)
 		[res setObject:convertPyObject(item) atIndexedSubscript:i];
 	}
 	return res;
+}
+
+-(PyObject *)pyObject
+{
+	PyObject *list = PyList_New(0);
+	for (id element in self) PyList_Append(list, [element pyObject]);
+	return list;
 }
 
 @end

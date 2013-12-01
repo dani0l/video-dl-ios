@@ -37,7 +37,8 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 
 		PyObject *videodl_mod = PyImport_ImportModule("video_dl");
 		PyObject *VideoDL = PyObject_GetAttrString(videodl_mod, "VideoDL");
-		PyObject *init_args = Py_BuildValue("sO", [video_template UTF8String], hook);
+		NSDictionary *params = @{@"outtmpl": video_template};
+		PyObject *init_args = Py_BuildValue("OO", [params pyObject], hook);
 		vdl = PyObject_CallObject(VideoDL, init_args);
 
 
