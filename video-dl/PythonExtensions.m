@@ -22,7 +22,7 @@ id convertPyObject(PyObject *object)
 
 +(NSString *)stringWithPyString:(PyObject *)object
 {
-	return [NSString stringWithUTF8String:PyString_AsString(object)];
+	return [NSString stringWithUTF8String:PyBytes_AsString(object)];
 }
 
 @end
@@ -31,8 +31,7 @@ id convertPyObject(PyObject *object)
 
 +(NSNumber *)numberWithPyInt:(PyObject *)object
 {
-
-	return [NSNumber numberWithLong:PyInt_AsLong(object)];
+	return [NSNumber numberWithLong:PyLong_AsLong(object)];
 }
 
 +(NSNumber *)numberWithPyLong:(PyObject *)object
