@@ -28,6 +28,10 @@ video-dl/python/pylib/lib: ${CPython}/Lib
 	mkdir -p video-dl/python/pylib
 	cp -Rf "$<" "$@"
 
+video-dl/python/pylib/otherlibs: ${PY_EMBED}/pylib/otherlibs
+	mkdir -p $@
+	cp -Rf $</* "$@/"
+
 video-dl/python/pylib/exec: ${PY_EMBED}/pylib/exec
 	cp -Rf "$<" "$@"
 
@@ -38,7 +42,7 @@ video-dl/python/pylib/pyconfig.h: ${PY_EMBED}/pylib/pyconfig.h
 	mkdir -p "$(dir $@)"
 	cp -f "$<" "$@"
 
-video-dl/python/pylib: video-dl/python/pylib/pyconfig.h video-dl/python/pylib/lib  video-dl/python/pylib/exec/include/python2.7/pyconfig.h video-dl/python/pylib/exec
+video-dl/python/pylib: video-dl/python/pylib/pyconfig.h video-dl/python/pylib/lib  video-dl/python/pylib/exec/include/python2.7/pyconfig.h video-dl/python/pylib/exec video-dl/python/pylib/otherlibs
 
 video-dl/python/modules: 
 	mkdir -p "$@"
