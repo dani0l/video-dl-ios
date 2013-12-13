@@ -73,15 +73,15 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 	NSDictionary *progress = [NSDictionary dictionaryWithPyObject:pyProgress];
 	NSString *filename = [progress objectForKey:@"filename"];
 	NSString *status = [progress objectForKey:@"status"];
+	if (!currentVideo) {
+		currentVideo = [[VDVideo alloc] initWithFolder:[filename stringByDeletingLastPathComponent]];
+		[self.delegate videoDL:self startedDownloadForVideo:currentVideo];
+	}
 	if ([status isEqualToString:@"finished"]) {
 		[self.delegate videoDL:self finishedDownloadForVideo:currentVideo];
 		currentVideo = nil;
 	}
 	else {
-		if (!currentVideo) {
-			currentVideo = [[VDVideo alloc] initWithFolder:[filename stringByDeletingLastPathComponent]];
-			[self.delegate videoDL:self startedDownloadForVideo:currentVideo];
-		}
 		[self.delegate videoDL:self reportsDownloadProgress:progress forVideo:currentVideo];
 	}
 	Py_RETURN_NONE;
