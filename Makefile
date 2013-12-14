@@ -44,12 +44,12 @@ video-dl/python/pylib/pyconfig.h: ${PY_EMBED}/pylib/pyconfig.h
 
 video-dl/python/pylib: video-dl/python/pylib/pyconfig.h video-dl/python/pylib/lib  video-dl/python/pylib/exec/include/python2.7/pyconfig.h video-dl/python/pylib/exec video-dl/python/pylib/otherlibs
 
-video-dl/python/modules: 
+video-dl/python/modules/youtube_dl: 
 	mkdir -p "$@"
-	cp -Rf "youtube-dl/youtube_dl" "$@"
-	sed -i '' "s/from .update import update_self/# Do not import update code/" "video-dl/python/modules/youtube_dl/__init__.py"
+	cp -Rf "youtube-dl/youtube_dl/" "$@"
+	sed -i '' "s/from .update import update_self/# Do not import update code/" "$@/__init__.py"
 
-video-dl/python: video-dl/python/pylib video-dl/python/modules
+video-dl/python: video-dl/python/pylib video-dl/python/modules/youtube_dl
 
 libpython: build/python
 
