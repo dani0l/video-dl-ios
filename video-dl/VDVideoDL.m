@@ -36,6 +36,11 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 		PyObject *hook = PyObject_GetAttrString(hooks_module, "hook");
 
 		PyObject *videodl_mod = PyImport_ImportModule("video_dl");
+		if (!videodl_mod) {
+			NSLog(@"Unable to import 'video_dl' module:");
+			py_print_error();
+			abort(); // We should never get there with a tested build, but if there are some missing python modules we'll hit this
+		}
 		PyObject *VideoDL = PyObject_GetAttrString(videodl_mod, "VideoDL");
 		NSDictionary *params = @{@"outtmpl": video_template};
 		PyObject *init_args = Py_BuildValue("OO", [params pyObject], hook);
@@ -61,9 +66,10 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 
 -(void)testDownload
 {
-	py_print(PyObject_CallMethod(vdl, "test_hook", "()", NULL));
-	[self downloadFromUrl:@"http://www.youtube.com/watch?v=BaW_jenozKc"];
-	PRINT_PYERROR
+	NSString *test_url;
+	test_url = @"http://www.youtube.com/watch?v=BaW_jenozKc";
+	[self downloadFromUrl:test_url];
+	py_print_error();
 }
 
 -(PyObject *)progressHookWithSelf:(PyObject *)s AndArgs:(PyObject *)args
