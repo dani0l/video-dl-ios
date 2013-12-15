@@ -23,6 +23,7 @@
 		DB72AE2817DD094600877C35 /* pyutils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB72AE2717DD094600877C35 /* pyutils.c */; };
 		DB776B4117DD01C400297970 /* python in Resources */ = {isa = PBXBuildFile; fileRef = DB776B4017DD01C400297970 /* python */; };
 		DB776B4317DD01F100297970 /* libpython.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB776B4217DD01F100297970 /* libpython.a */; };
+		DB8E8B09185E212100B1F204 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8E8B08185E212100B1F204 /* Default-568h@2x.png */; };
 		DBC0803517E1E31900C2C0E9 /* VDVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC0803417E1E31900C2C0E9 /* VDVideo.m */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		DB72AE2717DD094600877C35 /* pyutils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pyutils.c; sourceTree = "<group>"; };
 		DB776B4017DD01C400297970 /* python */ = {isa = PBXFileReference; lastKnownFileType = folder; path = python; sourceTree = "<group>"; };
 		DB776B4217DD01F100297970 /* libpython.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libpython.a; path = build/python/libpython.a; sourceTree = SOURCE_ROOT; };
+		DB8E8B08185E212100B1F204 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		DBC0803317E1E31900C2C0E9 /* VDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDVideo.h; sourceTree = "<group>"; };
 		DBC0803417E1E31900C2C0E9 /* VDVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDVideo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +129,7 @@
 		DB4A952C17DCF2F500A96E5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DB8E8B0A185E219000B1F204 /* images */,
 				DB4A952D17DCF2F500A96E5D /* video-dl-Info.plist */,
 				DB4A952E17DCF2F500A96E5D /* InfoPlist.strings */,
 				DB4A953117DCF2F500A96E5D /* main.m */,
@@ -143,6 +146,14 @@
 				DB776B4017DD01C400297970 /* python */,
 			);
 			name = "python-files";
+			sourceTree = "<group>";
+		};
+		DB8E8B0A185E219000B1F204 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				DB8E8B08185E212100B1F204 /* Default-568h@2x.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 				DB4A953017DCF2F500A96E5D /* InfoPlist.strings in Resources */,
 				DB776B4117DD01C400297970 /* python in Resources */,
 				DB5BA89617DFAC11003E080A /* VDVideoBrowser.xib in Resources */,
+				DB8E8B09185E212100B1F204 /* Default-568h@2x.png in Resources */,
 				DB0FA98F17E33B7500C8B972 /* VDDownloadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
