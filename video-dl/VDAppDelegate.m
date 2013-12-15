@@ -11,7 +11,7 @@
     self.window.backgroundColor = [UIColor grayColor];
     [self.window makeKeyAndVisible];
 
-	downloadViewController = [[VDDownloadViewController alloc] initWithNibName:@"VDDownloadViewController" bundle:nil];
+	downloadViewController = [[VDDownloadViewController alloc] init];
 	downloadViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:0];
 
 	videoBrowser = [[VDVideoBrowser alloc] initWithStyle:UITableViewStylePlain];

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		DB0FA98E17E33B7500C8B972 /* VDDownloadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0FA98C17E33B7500C8B972 /* VDDownloadViewController.m */; };
-		DB0FA98F17E33B7500C8B972 /* VDDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB0FA98D17E33B7500C8B972 /* VDDownloadViewController.xib */; };
 		DB1C77441801EF820035987D /* PythonExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1C77431801EF820035987D /* PythonExtensions.m */; };
 		DB457CC217DDD04900DFC634 /* VDVideoDL.m in Sources */ = {isa = PBXBuildFile; fileRef = DB457CC117DDD04900DFC634 /* VDVideoDL.m */; };
 		DB4A952617DCF2F500A96E5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB4A952517DCF2F500A96E5D /* UIKit.framework */; };
@@ -29,7 +28,6 @@
 /* Begin PBXFileReference section */
 		DB0FA98B17E33B7500C8B972 /* VDDownloadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDDownloadViewController.h; sourceTree = "<group>"; };
 		DB0FA98C17E33B7500C8B972 /* VDDownloadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDDownloadViewController.m; sourceTree = "<group>"; };
-		DB0FA98D17E33B7500C8B972 /* VDDownloadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VDDownloadViewController.xib; sourceTree = "<group>"; };
 		DB1C77431801EF820035987D /* PythonExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PythonExtensions.m; sourceTree = "<group>"; };
 		DB457CC017DDD04900DFC634 /* VDVideoDL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDVideoDL.h; sourceTree = "<group>"; };
 		DB457CC117DDD04900DFC634 /* VDVideoDL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDVideoDL.m; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 				DB5BA89317DFAC11003E080A /* VDVideoBrowser.m */,
 				DB0FA98B17E33B7500C8B972 /* VDDownloadViewController.h */,
 				DB0FA98C17E33B7500C8B972 /* VDDownloadViewController.m */,
-				DB0FA98D17E33B7500C8B972 /* VDDownloadViewController.xib */,
 				DB457CC017DDD04900DFC634 /* VDVideoDL.h */,
 				DB457CC117DDD04900DFC634 /* VDVideoDL.m */,
 				DBC0803317E1E31900C2C0E9 /* VDVideo.h */,
@@ -208,7 +205,6 @@
 				DB4A953017DCF2F500A96E5D /* InfoPlist.strings in Resources */,
 				DB776B4117DD01C400297970 /* python in Resources */,
 				DB8E8B09185E212100B1F204 /* Default-568h@2x.png in Resources */,
-				DB0FA98F17E33B7500C8B972 /* VDDownloadViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

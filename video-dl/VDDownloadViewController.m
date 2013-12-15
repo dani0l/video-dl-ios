@@ -3,19 +3,40 @@
 
 
 @implementation VDDownloadViewController
+@synthesize urlTextField, progressLabel, progview;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(void)setupView
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+	[self.view setBackgroundColor:[UIColor whiteColor]]; // otherwise parts of the view are gray
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+	label.text = @"Enter the url to download:";
+	urlTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+	[urlTextField setBorderStyle:UITextBorderStyleRoundedRect];
+	[urlTextField setDelegate:self];
+	progressLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+	progview = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+	progressLabel.hidden = progview.hidden = YES;
+
+
+	// Start to build the constraints
+	NSArray *subViews = @[urlTextField, label, progressLabel, progview];
+	for (UIView *subView in subViews) {
+		// otherwise we'll get a message saying that not all the constraints could be satisfied
+		subView.translatesAutoresizingMaskIntoConstraints = NO;
+		[self.view addSubview:subView];
+	}
+	NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(label, urlTextField, progressLabel, progview);
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[urlTextField]-|" options:0 metrics:nil views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[label]-|" options:0 metrics:nil views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[progressLabel]-|" options:0 metrics:nil views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[progview]-|" options:0 metrics:nil views:viewsDictionary]];
+	[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[label(==20)]-[urlTextField(==20)]-(>=100)-[progressLabel(==20)]-[progview]" options:0 metrics:nil views:viewsDictionary]];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+	[self setupView];
 	self.urlTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
 	self.urlTextField.autocorrectionType = UITextAutocorrectionTypeNo;
 	self.urlTextField.enablesReturnKeyAutomatically = YES;
