@@ -14,7 +14,7 @@
 	downloadViewController = [[VDDownloadViewController alloc] initWithNibName:@"VDDownloadViewController" bundle:nil];
 	downloadViewController.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemDownloads tag:0];
 
-	videoBrowser = [[VDVideoBrowser alloc] initWithNibName:@"VDVideoBrowser" bundle:nil];
+	videoBrowser = [[VDVideoBrowser alloc] initWithStyle:UITableViewStylePlain];
 	UINavigationController *videoBrowserNavigationController = [[UINavigationController alloc] initWithRootViewController:videoBrowser];
 	videoBrowserNavigationController.tabBarItem.title = @"Browse videos";
 
