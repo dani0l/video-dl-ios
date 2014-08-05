@@ -12,4 +12,4 @@ class VideoDL(youtube_dl.YoutubeDL):
         default_params.update(params)
         super(VideoDL, self).__init__(default_params)
         self.add_default_info_extractors()
-        self.fd.add_progress_hook(hook)
+        self.add_progress_hook(hook)

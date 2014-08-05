@@ -48,6 +48,7 @@ video-dl/python/modules/youtube_dl:
 	mkdir -p "$@"
 	cp -Rf "youtube-dl/youtube_dl/" "$@"
 	sed -i '' "s/from .update import update_self/# Do not import update code/" "$@/__init__.py"
+	sed -i '' "s/import ctypes/# import ctypes (Not used)/" "$@/utils.py"
 
 video-dl/python: video-dl/python/pylib video-dl/python/modules/youtube_dl
 
