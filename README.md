@@ -13,7 +13,7 @@ Before you can build the app you have to follow some steps:
 	make all
 	```
 
-The you can open the Xcode project and test it in the simulator.
+Then you can open the Xcode project and test it in the simulator.
 
 # Updating youtube-dl
 
