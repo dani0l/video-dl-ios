@@ -3,7 +3,7 @@
 
 #import "Python.h"
 
-void py_path_append(char *new_dir);
+void py_path_append(wchar_t *new_dir);
 void py_print(PyObject *object);
 void py_print_error();
 

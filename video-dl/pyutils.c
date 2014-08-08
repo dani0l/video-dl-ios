@@ -2,11 +2,13 @@
 
 #include <stdio.h>
 
-void py_path_append(char *new_dir)
+#include <wchar.h>
+
+void py_path_append(wchar_t *new_dir)
 {
-	char *current_path = Py_GetPath();
-	char *final_path = strcat(strcat(current_path, ":"), new_dir);
-	printf("%s\n", final_path);
+	wchar_t *current_path = Py_GetPath();
+	wchar_t *final_path = wcscat(wcscat(current_path, L":"), new_dir);
+	wprintf(L"%s\n", final_path);
 	PySys_SetPath(final_path);
 }
 

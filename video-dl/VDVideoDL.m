@@ -5,6 +5,12 @@
 #import "pyutils.h"
 
 
+struct VDHooks_module_state {
+    PyObject *error;
+};
+
+#define GETSTATE(m) ((struct VDHooks_module_state*)PyModule_GetState(m))
+
 static PyObject *progress_hook(PyObject *self, PyObject *args)
 {
 	// It's not the best way to call the method in videodl,
@@ -12,6 +18,33 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 	VDVideoDL *videodl = [VDAppDelegate currentVideoDL];
 	return  [videodl progressHookWithSelf:self AndArgs:args];
 }
+
+static PyMethodDef VDHooks_Methods[] = {
+    {"hook", progress_hook, METH_VARARGS, ""},
+    {NULL, NULL, 0, NULL}
+};
+
+static int VDHooks_traverse(PyObject *m, visitproc visit, void *arg) {
+    Py_VISIT(GETSTATE(m)->error);
+    return 0;
+}
+
+static int VDHooks_clear(PyObject *m) {
+    Py_CLEAR(GETSTATE(m)->error);
+    return 0;
+}
+
+static struct PyModuleDef VDHooks_moduledef = {
+    PyModuleDef_HEAD_INIT,
+    "vdl_hooks",
+    NULL,
+    sizeof(struct VDHooks_module_state),
+    VDHooks_Methods,
+    NULL,
+    VDHooks_traverse,
+    VDHooks_clear,
+    NULL
+};
 
 
 @implementation VDVideoDL
@@ -28,11 +61,8 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 		NSString *video_template = [[VDVideoDL videosFolder] stringByAppendingPathComponent:@"%(extractor)s-%(id)s.%(ext)s/%(extractor)s-%(id)s.%(ext)s"];
 
 		// We create a module for holding the progress hook
-		static PyMethodDef HooksMethods[] = {
-			{"hook", progress_hook, METH_VARARGS, ""},
-			{NULL, NULL, 0, NULL}
-		};
-		PyObject *hooks_module = Py_InitModule("vdl_hooks", HooksMethods);
+
+		PyObject *hooks_module = PyModule_Create(&VDHooks_moduledef);
 		PyObject *hook = PyObject_GetAttrString(hooks_module, "hook");
 
 		PyObject *videodl_mod = PyImport_ImportModule("video_dl");
@@ -47,7 +77,7 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 		vdl = PyObject_CallObject(VideoDL, init_args);
 
 
-		youtube_dl_version = [NSString stringWithPyString:PyObject_GetAttrString(videodl_mod, "ydl_version")];
+		youtube_dl_version = [NSString stringWithPyUnicode:PyObject_GetAttrString(videodl_mod, "ydl_version")];
 	}
 	return self;
 }
@@ -61,7 +91,7 @@ static PyObject *progress_hook(PyObject *self, PyObject *args)
 	// The initial python path python/pylib/lib is relative to the current directory (initially "/")
 	chdir([program UTF8String]);
 	Py_Initialize();
-	py_path_append((char *)[python_modules UTF8String]);
+	py_path_append((wchar_t *)[python_modules cStringUsingEncoding:NSUTF32LittleEndianStringEncoding]);
 }
 
 -(void)testDownload

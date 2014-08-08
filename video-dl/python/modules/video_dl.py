@@ -8,6 +8,8 @@ class VideoDL(youtube_dl.YoutubeDL):
             'continuedl': True,
             'writeinfojson': True,
             'writethumbnail': True,
+            # TODO: check certificates, it may require bundling *.pem files
+            'nocheckcertificate': True,
         }
         default_params.update(params)
         super(VideoDL, self).__init__(default_params)

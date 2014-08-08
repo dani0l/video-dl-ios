@@ -3,10 +3,8 @@
 id convertPyObject(PyObject *object)
 {
 	if (PyUnicode_Check(object)) return [NSString stringWithPyUnicode:object];
-	else if (PyInt_Check(object)) return [NSNumber numberWithPyInt:object];
 	else if (PyLong_Check(object)) return [NSNumber numberWithPyLong:object];
 	else if (PyFloat_Check(object)) return [NSNumber numberWithPyFloat:object];
-	else if (PyString_Check(object)) return [NSString stringWithPyString:object];
 	else if (PyDict_Check(object)) return [NSDictionary dictionaryWithPyObject:object];
 	else if (PyList_Check(object)) return [NSArray arrayWithPyObject:object];
 	else if (object == Py_None) return  [NSNull null];
@@ -17,12 +15,7 @@ id convertPyObject(PyObject *object)
 
 +(NSString *)stringWithPyUnicode:(PyObject *)object
 {
-	return [NSString stringWithPyString:PyUnicode_AsUTF8String(object)];
-}
-
-+(NSString *)stringWithPyString:(PyObject *)object
-{
-	return [NSString stringWithUTF8String:PyBytes_AsString(object)];
+	return [NSString stringWithUTF8String:PyUnicode_AsUTF8(object)];
 }
 
 -(PyObject *)pyObject
@@ -33,11 +26,6 @@ id convertPyObject(PyObject *object)
 @end
 
 @implementation NSNumber (Python)
-
-+(NSNumber *)numberWithPyInt:(PyObject *)object
-{
-	return [NSNumber numberWithLong:PyLong_AsLong(object)];
-}
 
 +(NSNumber *)numberWithPyLong:(PyObject *)object
 {
