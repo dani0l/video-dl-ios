@@ -57,4 +57,4 @@ libpython: build/python
 xcodefiles: video-dl/python
 
 clean:
-	rm -fR "${PY_EMBED}/build" "${PY_EMBED}/libpython.a" "video-dl/python/pylib" build
+	rm -fR "${PY_EMBED}/build" "${PY_EMBED}/libpython.a" "video-dl/python/pylib" build "video-dl/python/modules/youtube_dl"
