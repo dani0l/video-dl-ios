@@ -2,7 +2,7 @@
 
 @implementation VDVideo
 
-@synthesize info_dict;
+@synthesize info_dict, description;
 
 -(id)initWithFolder:(NSString *)folder
 {
