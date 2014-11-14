@@ -8,6 +8,7 @@ id convertPyObject(PyObject *object);
 
 +(NSString *)stringWithPyUnicode:(PyObject *)object;
 -(PyObject *)pyObject;
+-(wchar_t *)wideString;
 
 @end
 

@@ -8,7 +8,7 @@ void py_path_append(wchar_t *new_dir)
 {
 	wchar_t *current_path = Py_GetPath();
 	wchar_t *final_path = wcscat(wcscat(current_path, L":"), new_dir);
-	wprintf(L"%s\n", final_path);
+	wprintf(L"PYTHONPATH: %S\n", final_path);
 	PySys_SetPath(final_path);
 }
 

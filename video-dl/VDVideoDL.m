@@ -91,7 +91,7 @@ static struct PyModuleDef VDHooks_moduledef = {
 	// The initial python path python/pylib/lib is relative to the current directory (initially "/")
 	chdir([program UTF8String]);
 	Py_Initialize();
-	py_path_append((wchar_t *)[python_modules cStringUsingEncoding:NSUTF32LittleEndianStringEncoding]);
+	py_path_append([python_modules wideString]);
 }
 
 -(void)testDownload

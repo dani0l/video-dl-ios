@@ -23,6 +23,16 @@ id convertPyObject(PyObject *object)
 	return PyUnicode_FromString([self UTF8String]);
 }
 
+-(wchar_t *)wideString
+{
+    // http://minhdanh2002.blogspot.com/2011/12/converting-between-nsstring-and-c.html
+    const char *temp = [self cStringUsingEncoding:NSUTF8StringEncoding];
+    int bufflen = strlen(temp)+1;
+    wchar_t *buffer = malloc(bufflen*sizeof(wchar_t));
+    mbstowcs(buffer, temp, bufflen);
+    return buffer;
+}
+
 @end
 
 @implementation NSNumber (Python)
