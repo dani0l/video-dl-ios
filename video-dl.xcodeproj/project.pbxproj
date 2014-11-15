@@ -23,6 +23,7 @@
 		DB776B4317DD01F100297970 /* libpython.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DB776B4217DD01F100297970 /* libpython.a */; };
 		DB8E8B09185E212100B1F204 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DB8E8B08185E212100B1F204 /* Default-568h@2x.png */; };
 		DBC0803517E1E31900C2C0E9 /* VDVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC0803417E1E31900C2C0E9 /* VDVideo.m */; };
+		DBDD6D701A1780D200FE8F66 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DBDD6D6F1A1780D100FE8F66 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		DB8E8B08185E212100B1F204 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		DBC0803317E1E31900C2C0E9 /* VDVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDVideo.h; sourceTree = "<group>"; };
 		DBC0803417E1E31900C2C0E9 /* VDVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDVideo.m; sourceTree = "<group>"; };
+		DBDD6D6F1A1780D100FE8F66 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBDD6D701A1780D200FE8F66 /* libz.dylib in Frameworks */,
 				DB5A203217E2291300346A80 /* MediaPlayer.framework in Frameworks */,
 				DB4A952617DCF2F500A96E5D /* UIKit.framework in Frameworks */,
 				DB4A952817DCF2F500A96E5D /* Foundation.framework in Frameworks */,
@@ -90,6 +93,7 @@
 		DB4A952417DCF2F500A96E5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBDD6D6F1A1780D100FE8F66 /* libz.dylib */,
 				DB4A952517DCF2F500A96E5D /* UIKit.framework */,
 				DB4A952717DCF2F500A96E5D /* Foundation.framework */,
 				DB4A952917DCF2F500A96E5D /* CoreGraphics.framework */,
