@@ -93,6 +93,7 @@ static struct PyModuleDef VDHooks_moduledef = {
 		python_modules];
 	NSString *python_path_s = [python_path componentsJoinedByString:@":"];
 	Py_SetPath([python_path_s wideString]);
+	Py_NoSiteFlag = 1; // It seems that we don't need it and it produces a fatal error in iOS 8 during the import
 	Py_Initialize();
 }
 
