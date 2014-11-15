@@ -86,12 +86,14 @@ static struct PyModuleDef VDHooks_moduledef = {
 {
 	NSString *program = [[[NSBundle mainBundle] bundlePath] stringByAppendingString:@"/"];
 	NSString *python_folder = [program stringByAppendingString:@"python"];
+	NSString *pylib_folder = [python_folder stringByAppendingString:@"/pylib"];
 	NSString *python_modules = [python_folder stringByAppendingString:@"/modules"];
-	// TODO: undo the cd
-	// The initial python path python/pylib/lib is relative to the current directory (initially "/")
-	chdir([program UTF8String]);
+	NSArray *python_path = @[[pylib_folder stringByAppendingString:@"/lib"],
+		[pylib_folder stringByAppendingString:@"/otherlibs"],
+		python_modules];
+	NSString *python_path_s = [python_path componentsJoinedByString:@":"];
+	Py_SetPath([python_path_s wideString]);
 	Py_Initialize();
-	py_path_append([python_modules wideString]);
 }
 
 -(void)testDownload
