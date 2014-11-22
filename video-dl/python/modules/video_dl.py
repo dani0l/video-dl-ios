@@ -1,6 +1,7 @@
 import youtube_dl
+import youtube_dl.version
 
-ydl_version = youtube_dl.__version__
+ydl_version = youtube_dl.version.__version__
 
 class VideoDL(youtube_dl.YoutubeDL):
     def __init__(self, params, hook):
