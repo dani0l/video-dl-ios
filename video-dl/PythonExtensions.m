@@ -27,7 +27,7 @@ id convertPyObject(PyObject *object)
 {
     // http://minhdanh2002.blogspot.com/2011/12/converting-between-nsstring-and-c.html
     const char *temp = [self cStringUsingEncoding:NSUTF8StringEncoding];
-    int bufflen = strlen(temp)+1;
+    unsigned long bufflen = strlen(temp)+1;
     wchar_t *buffer = malloc(bufflen*sizeof(wchar_t));
     mbstowcs(buffer, temp, bufflen);
     return buffer;
@@ -60,7 +60,7 @@ id convertPyObject(PyObject *object)
 +(NSDictionary *)dictionaryWithPyObject:(PyObject *)object
 {
 	PyObject *_items = PyDict_Items(object);
-	int len = PyList_Size(_items);
+	Py_ssize_t len = PyList_Size(_items);
 	NSMutableDictionary *res = [NSMutableDictionary dictionaryWithCapacity:len];
 	for (int i=0; i<len; i++) {
 		PyObject *item = PyList_GetItem(_items, i);
@@ -89,7 +89,7 @@ id convertPyObject(PyObject *object)
 
 +(NSArray *)arrayWithPyObject:(PyObject *)object
 {
-	int len = PyList_Size(object);
+	Py_ssize_t len = PyList_Size(object);
 	NSMutableArray *res = [NSMutableArray arrayWithCapacity:len];
 	for (int i=0; i<len; i++) {
 		PyObject *item = PyList_GetItem(object, i);
